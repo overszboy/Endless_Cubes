@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class CubeStucker : MonoBehaviour ,IService
+public class CubeStucker : MonoBehaviour 
 {
     [SerializeField] private GameObject cubePrefub;
     [SerializeField] private GameObject cubeHolder;

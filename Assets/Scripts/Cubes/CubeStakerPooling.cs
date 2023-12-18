@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class CubeStakerPooling : MonoBehaviour, IService
+public class CubeStakerPooling : MonoBehaviour
 {
     [SerializeField] private GameObject cubePrefub;
     [SerializeField] private GameObject cubeHolder;

@@ -25,30 +25,23 @@ public class CubeColisionDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<PickUp>(out PickUp wall))
+        if (other.TryGetComponent<PickUp>(out PickUp pickUp))
         {
 
             if (gameEvents!=null)
             {
             gameEvents.createGube.Invoke();
-            Debug.Log("Game Events NOT NULL");
+           
             }
             else 
             {
-                Debug.Log("Game Events = NULL");
+               
             }
             Destroy(other.gameObject);
         }
-
-
-
-
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.TryGetComponent<Wall>(out Wall wall) && !coll)
+        if (other.gameObject.TryGetComponent<Wall>(out Wall wall) && !coll)
         {
-         
+             
             coll = true;
             this.gameObject.transform.parent.transform.parent= null;
             
@@ -56,7 +49,7 @@ public class CubeColisionDetection : MonoBehaviour
             cubeStacker.poolCount++;
            
             
-            int scoreCoeff = (int)collision.gameObject.transform.parent.localPosition.y + 1;
+            int scoreCoeff = (int)other.gameObject.transform.parent.localPosition.y + 1;
             gameEvents.ScoreUpdate.Invoke(scoreValue*scoreCoeff);
 
             gameEvents.cameraShake.Invoke();
@@ -66,7 +59,14 @@ public class CubeColisionDetection : MonoBehaviour
            
             Invoke("SetActiveFalse", 1f);
         }
+
+
+
+
     }
+   
+        
+    
 
    private void SetActiveFalse() {
 
@@ -74,6 +74,11 @@ public class CubeColisionDetection : MonoBehaviour
         this.transform.localPosition = new Vector3(0f, 0f, 0f);
         coll = false;
       
+    }
+    void Update()
+    {
+        transform.localPosition = new Vector3(0f,transform.localPosition.y,0f);
+        
     }
    
 }

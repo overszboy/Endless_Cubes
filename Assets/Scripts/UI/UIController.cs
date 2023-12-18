@@ -11,6 +11,14 @@ public class UIController : MonoBehaviour
     [SerializeField] Button restartButton;
     [SerializeField] Button startButton;
     [SerializeField] TextMeshProUGUI scoreText;
+    private GameEvents gameEvents;
+
+     [Inject]
+     private void Inject(GameEvents _gameEvents) {
+        gameEvents=_gameEvents;
+     
+     } 
+     
 
     private int score=0;
 
@@ -21,11 +29,13 @@ public class UIController : MonoBehaviour
   
 
 
-    private void Start()
+    private void Awake()
     {
        
         restartButton.onClick.AddListener(OnRestartButtonClick);
         startButton.onClick.AddListener (OnStartButtonClick);
+         gameEvents.ScoreUpdate.AddListener( ChangeScore);
+         gameEvents.changeGameState.AddListener(OnGameOver);
        
     }
 
@@ -33,6 +43,7 @@ public class UIController : MonoBehaviour
     {
        
         startButton.gameObject.SetActive(false);
+        gameEvents.changeGameState.Invoke(LevelStates.Playing);
         
     }
 
@@ -51,9 +62,14 @@ public class UIController : MonoBehaviour
         scoreText.text=score.ToString();
 
      }
-    public void SetRestartButton (bool isEnabled)
+   
+    private void OnGameOver(LevelStates levelState)
     {
-       restartButton.gameObject.SetActive(isEnabled);
+        if (levelState==LevelStates.GameOver)
+    {
+         restartButton.gameObject.SetActive(true);
+
+    }
 
     }
 

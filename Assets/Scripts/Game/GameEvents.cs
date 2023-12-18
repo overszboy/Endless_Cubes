@@ -1,7 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.Events;
-public class GameEvents : IService
+public class GameEvents 
 {
 
     public  UnityEvent createGube = new UnityEvent();

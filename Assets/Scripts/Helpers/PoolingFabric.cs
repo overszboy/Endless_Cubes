@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolingFabric : IService
+public class PoolingFabric
 {
     private readonly GameObject  prefub;
     private readonly Stack<GameObject> stackOfObjects;

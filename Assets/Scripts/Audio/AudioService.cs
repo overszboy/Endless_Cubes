@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class AudioService : MonoBehaviour , IService
+public class AudioService : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSourceOne;
     [SerializeField] private AudioSource audioSourceTwo;
@@ -64,6 +64,12 @@ public class AudioService : MonoBehaviour , IService
         {
 
             case LevelStates.Pause:
+                audioSourceOne.Stop();
+                audioSourceOne.clip = pause;
+                audioSourceOne.Play();
+                
+                break;
+            case LevelStates.GameOver:
                 audioSourceOne.Stop();
                 audioSourceOne.clip = pause;
                 audioSourceOne.Play();
