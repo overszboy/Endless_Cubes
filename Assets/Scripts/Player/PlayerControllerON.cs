@@ -7,7 +7,7 @@ public class PlayerControllerON : IPlayerControllerState
     private readonly GameObject player;
 
     private readonly float playerForwardSpeed = 10f;
-    private readonly float sensetivity = 800f;
+    private readonly float sensetivity = 600f;
 
     private  float touchStartPosition = 0;
     private  float touchDistanse = 0;

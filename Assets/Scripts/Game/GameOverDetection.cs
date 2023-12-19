@@ -15,9 +15,11 @@ public class GameOverDetection : MonoBehaviour
     private Rigidbody mainRigidbody;
     private Collider mainColider;
     private Animator  animator;
-      [Inject] private void Inject(GameEvents _gameEvents)
+    private AudioService audioService;
+      [Inject] private void Inject(GameEvents _gameEvents,AudioService _audioService)
        {
         gameEvents=_gameEvents;
+        audioService=_audioService;
        } 
     
     private void Awake() {
@@ -53,7 +55,7 @@ public class GameOverDetection : MonoBehaviour
         {
            
             gameEvents.changeGameState.Invoke(LevelStates.GameOver);
-            gameEvents.audioFxEvent?.Invoke(AudioFxType.gameOvereFx);
+            audioService.PlayGameOverFx();
             gameEvents.enableRestartButton.Invoke();
             Destroy(mainRigidbody);
             Destroy(mainColider);

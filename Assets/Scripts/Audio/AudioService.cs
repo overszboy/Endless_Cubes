@@ -12,79 +12,47 @@ public class AudioService : MonoBehaviour
     [SerializeField] private AudioClip pause;
     [SerializeField] private AudioClip soundtrack;
 
-    private GameEvents gameEvents;
-
-  [Inject] private void Inject(GameEvents _gameEvents,Player _player)
-       {
-        gameEvents=_gameEvents;
-
-       } 
     
+       private void Awake() {
+        audioSourceOne.loop=true;
+       }
+   
 
-    private void Start()
-    {
-
-        audioSourceOne.Stop();
+    
+    
+       public void PlayPauseMusic ()
+    {   audioSourceOne.Stop();
         audioSourceOne.clip = pause;
         audioSourceOne.Play();
-
-        gameEvents.changeGameState.AddListener(onChangeGameState);
-        gameEvents.audioFxEvent?.AddListener(AudioFxEvent);
-
+        
     }
-
-    private void AudioFxEvent(AudioFxType fxType)
+      public void PlayLevelMusic ()
     {
-        switch (fxType)
-        {
-
-            case AudioFxType.cubeFx:
-                audioSourceTwo.clip = cubeFX;
-                audioSourceTwo.Play();
-                break;
-            case AudioFxType.wallFX:
-                audioSourceTwo.clip = wallFX;
-                audioSourceTwo.Play();
-                break;
-            case AudioFxType.gameOvereFx:
-                audioSourceThree.clip = gameOverFX;
-                audioSourceThree.Play();
-                break;
-            default:
-                break;
-        }
-
-
+        audioSourceOne.Stop();
+        audioSourceOne.clip = soundtrack;
+        audioSourceOne.Play();
+        
     }
-
-   private void  onChangeGameState(LevelStates gameState)
+    public void PlayCubeFx ()
     {
-
-        switch (gameState)
-        {
-
-            case LevelStates.Pause:
-                audioSourceOne.Stop();
-                audioSourceOne.clip = pause;
-                audioSourceOne.Play();
-                
-                break;
-            case LevelStates.GameOver:
-                audioSourceOne.Stop();
-                audioSourceOne.clip = pause;
-                audioSourceOne.Play();
-                
-                break;
-            case LevelStates.Playing:
-                audioSourceOne.Stop();
-                audioSourceOne.clip = soundtrack;
-                audioSourceOne.Play();
-
-                break;
-            default:
-                break;
-        }
-
+        audioSourceTwo.clip = cubeFX;
+        audioSourceTwo.Play();
+        
     }
+ 
+       public void PlayWallFx ()
+    {
+        audioSourceTwo.clip = wallFX;
+        audioSourceTwo.Play();
+        
+    }
+       public void PlayGameOverFx ()
+    {
+        audioSourceTwo.clip = gameOverFX;
+        audioSourceTwo.Play();
+        
+    }
+
+   
 
 }

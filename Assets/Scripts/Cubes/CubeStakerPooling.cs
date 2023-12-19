@@ -16,15 +16,21 @@ public class CubeStakerPooling : MonoBehaviour
     public Stack<GameObject> cubeStack;
     private GameEvents gameEvents;
     private PoolingFabric plusOneFabric;
+    private AudioService audioService;
+   
     public int poolCount = 0;
 
 
-      [Inject] private void Inject(GameEvents _gameEvents)
+
+      [Inject] private void Inject(GameEvents _gameEvents , AudioService _audioService)
        {
         gameEvents=_gameEvents;
+        audioService=_audioService;
        } 
     
-
+     private void Awake() {
+        
+     }
 
     private void Start()
     { 
@@ -87,7 +93,7 @@ public class CubeStakerPooling : MonoBehaviour
     {
         
         GameObject textEffectObject = plusOneFabric.CreateObject( newCubePosition, newCubeRotation);
-        gameEvents.audioFxEvent?.Invoke(AudioFxType.cubeFx);
+        audioService.PlayCubeFx();
         StartCoroutine(HideTextObj(textEffectObject));
         cubeEffect.Play();
     }

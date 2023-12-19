@@ -10,8 +10,7 @@ public class GameEvents
     public  UnityEvent cameraShake = new UnityEvent();
     public  UnityEvent<int> ScoreUpdate= new UnityEvent<int>();
     public UnityEvent enableRestartButton = new UnityEvent();
-    public UnityEvent<AudioFxType> audioFxEvent = new UnityEvent<AudioFxType>();
-
+    
  
     
 

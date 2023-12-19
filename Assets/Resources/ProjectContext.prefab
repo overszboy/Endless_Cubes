@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3735308738522476703}
   - component: {fileID: 8196151484743270781}
+  - component: {fileID: 370579278859466468}
+  - component: {fileID: 1673053493645811634}
+  - component: {fileID: 628160397732288262}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -45,7 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 370579278859466468}
+  - {fileID: 628160397732288262}
+  - {fileID: 1673053493645811634}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -60,3 +66,43 @@ MonoBehaviour:
       _missingHandlerDefaultResponse: 2
       _requireStrictUnsubscribe: 0
       _defaultAsyncTickPriority: 1
+--- !u!114 &370579278859466468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771721835095607363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2d876f9f0c6441d8bcbbe69634c2a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1673053493645811634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771721835095607363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afac4a22b8950438e800924aa4d5c417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioService: {fileID: 108808777373542700, guid: 114b976f8b0a24aedbf8e4f15c1543f8,
+    type: 3}
+--- !u!114 &628160397732288262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771721835095607363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d6952e823e4432fa4ffd32df4988c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adsService: {fileID: 1896788039242016125, guid: 4379119880fbf43c0ae33050bec2885f,
+    type: 3}

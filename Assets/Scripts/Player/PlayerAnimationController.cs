@@ -6,7 +6,7 @@ public class PlayerAnimationController
     
     private Animator animator;
 
-    private const string ANIMATOR_TRIGGER_JUMP = "Jump";
+    private const string ANIMATOR_TRIGGER_JUMP = "JUMP";
    
     
      

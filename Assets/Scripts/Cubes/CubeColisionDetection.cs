@@ -10,14 +10,17 @@ public class CubeColisionDetection : MonoBehaviour
       private bool coll = false;
       private GameEvents gameEvents;
     private CubeStakerPooling cubeStacker;
-      
+    private AudioService audioService;
     private int  scoreValue = 100;
 
   
-      [Inject] private void Inject(GameEvents _gameEvents,CubeStakerPooling _cubeStakerPooling)
+      [Inject] private void Inject(GameEvents _gameEvents,
+                                   CubeStakerPooling _cubeStakerPooling,
+                                   AudioService _audioService)
        {
         gameEvents=_gameEvents;
         cubeStacker=_cubeStakerPooling;
+        audioService=_audioService;
         
         
        } 
@@ -53,7 +56,8 @@ public class CubeColisionDetection : MonoBehaviour
             gameEvents.ScoreUpdate.Invoke(scoreValue*scoreCoeff);
 
             gameEvents.cameraShake.Invoke();
-            gameEvents.audioFxEvent?.Invoke(AudioFxType.wallFX);
+            
+            audioService.PlayWallFx();
           
 
            
